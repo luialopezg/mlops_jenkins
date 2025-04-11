@@ -1,0 +1,15 @@
+# Entornos virtuales de Python
+venv/
+.env/
+
+# Archivos de caché de Python
+__pycache__/
+*.py[cod]
+
+# Archivos de datos (descomentar si son grandes/sensibles)
+
+# Modelos generados (descomentar si se generan localmente fuera de la pipeline)
+
+# Archivos específicos del editor/OS
+.vscode/
+.DS_Store
