@@ -9,7 +9,8 @@ __pycache__/
 # Archivos de datos (descomentar si son grandes/sensibles)
 
 # Modelos generados (descomentar si se generan localmente fuera de la pipeline)
-
+# echo "*.pkl" >> .gitignore
+*.joblib
 # Archivos específicos del editor/OS
 .vscode/
 .DS_Store
