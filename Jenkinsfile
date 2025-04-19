@@ -40,7 +40,8 @@ pipeline {
                         // ¡Esto puede necesitar configuración adicional en un Jenkins real!
                         echo "Ejecutando script de entrenamiento: python scripts/train.py"
                         // 'sh' ejecuta comandos de shell
-                        sh 'python scripts/train.py'
+                        sh 'python3 scripts/train.py'
+   
                     } else {
                         echo "Archivo de modelo ${env.MODEL_FILE} encontrado."
                     }
