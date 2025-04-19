@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: iris-service # Nombre que le damos a este Service
+spec:
+  type: NodePort # Tipo de Service: Expone el servicio en la IP de cada Nodo en un puerto estático (NodePort).
+  selector:
+    app: iris-api # ¡MUY IMPORTANTE! Debe coincidir exactamente con las etiquetas de los Pods (spec.template.metadata.labels en deployment.yaml)
+  ports:
+    - protocol: TCP
+      port: 80 # Puerto en el que este Service estará disponible DENTRO del clúster (otros pods podrían usar http://iris-service:80)
+      targetPort: 5000 # Puerto en el POD al que se enviará el tráfico (donde escucha nuestra app Flask)
+      # nodePort: 30007 # (Opcional) Podemos especificar un puerto fijo aquí (entre 30000-32767). Si lo omitimos, Kubernetes elige uno libre. Omitámoslo por simplicidad.

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-deployment  # Nombre que le damos a este Deployment
+spec:
+  replicas: 2  # Le pedimos a Kubernetes que mantenga 2 copias (Pods) de nuestra app corriendo
+  selector:
+    matchLabels:
+      app: iris-api # Busca Pods que tengan esta etiqueta para gestionarlos
+  template: # Esta es la plantilla para crear los Pods
+    metadata:
+      labels:
+        app: iris-api # Los Pods creados tendrán esta etiqueta (clave:valor)
+    spec:
+      containers:
+      - name: iris-api-container # Nombre del contenedor dentro del Pod
+        image: mi-prediccion-iris:v1 # ¡La imagen Docker que construimos!
+        imagePullPolicy: IfNotPresent # IMPORTANTE para Minikube/local: Usa la imagen local si existe, no intentes descargarla siempre de un registro externo.
+        ports:
+        - containerPort: 5000 # El puerto donde escucha nuestra app Flask DENTRO del contenedor
